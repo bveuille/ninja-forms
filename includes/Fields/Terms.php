@@ -30,7 +30,9 @@ class NF_Fields_Terms extends NF_Fields_ListCheckbox
 
         $this->_nicename = __( 'Terms List', 'ninja-forms' );
 
-        add_action( 'admin_init', array( $this, 'init_settings' ) );
+        if ( ! empty( $_GET[ 'page' ] ) && 'ninja-forms' == $_GET[ 'page' ] ) {
+          add_action( 'admin_init', array( $this, 'init_settings' ) );
+        }
 
         add_filter( 'ninja_forms_display_field', array( $this, 'active_taxonomy_field_check' ) );
         add_filter( 'ninja_forms_localize_field_' . $this->_type, array( $this, 'add_term_options' ) );
