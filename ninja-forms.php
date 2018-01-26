@@ -399,7 +399,6 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
 
         public function admin_notices()
         {
-            if( empty( $_GET[ 'page' ] ) || 'ninja-forms' !== $_GET[ 'page' ] ) return;
             // Notices filter and run the notices function.
             $admin_notices = Ninja_Forms()->config( 'AdminNotices' );
             self::$instance->notices->admin_notice( apply_filters( 'nf_admin_notices', $admin_notices ) );
@@ -407,7 +406,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
 
         public function plugins_loaded()
         {
-            // load_plugin_textdomain( 'ninja-forms', false, basename( dirname( __FILE__ ) ) . '/lang' );
+             load_plugin_textdomain( 'ninja-forms', false, basename( dirname( __FILE__ ) ) . '/lang' );
 
             /*
              * Field Class Registration
