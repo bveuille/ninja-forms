@@ -30,7 +30,9 @@ class NF_Fields_Terms extends NF_Fields_ListCheckbox
 
         $this->_nicename = __( 'Terms List', 'ninja-forms' );
 
-        if ( ! empty( $_GET[ 'page' ] ) && 'ninja-forms' == $_GET[ 'page' ] ) {
+        if ( ( ! empty( $_GET[ 'page' ] ) && 'ninja-forms' == $_GET[ 'page' ] ) ||
+           ( ! empty( $_GET[ 'post_type' ] ) && 'nf_sub' == $_GET[ 'post_type' ] ) ||
+           isset( $_GET[ 'post' ] ) ) {
           add_action( 'admin_init', array( $this, 'init_settings' ) );
         }
 
